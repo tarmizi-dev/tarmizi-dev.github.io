@@ -13,7 +13,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f4fd1'/%3E%3Cpath d='M8 9h16M16 9v15' stroke='white' stroke-width='3.2' stroke-linecap='square'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600&family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     /* Soft grey + sage + royal blue. Split hero, card rows, timeline, sage band, dark footer. */
     :root {
@@ -35,20 +35,48 @@
       --body: 'Inter', 'Segoe UI', system-ui, sans-serif;
       color-scheme: light;
     }
-    body.dark {
-      --bg: #121416;
-      --bg-2: #171a1c;
-      --card: #1d2023;
-      --ink: #eef0f2;
-      --muted: #9ba1a7;
-      --line: #2d3135;
-      --blue: #5a80ff;
-      --sage: #75826f;
-      --sage-2: #66725f;
-      --foot: #0c0d0e;
-      --shadow: none;
+    :root { --r: 6px; --rb: 4px; }
+    /* ===== THEMES (pick with the Theme button) ===== */
+    body[data-skin="ocean"] {
+      --bg: #eaf2f8; --bg-2: #f4f9fc; --card: #ffffff; --ink: #0f2433; --muted: #566a79; --line: #d3e1eb;
+      --blue: #0b7bd8; --sage: #7fb3d5; --sage-2: #3f86b8; --sage-ink: #0f2433; --foot: #0f2433;
+      --display: 'Poppins', 'Segoe UI', sans-serif; --body: 'Poppins', 'Segoe UI', sans-serif; --r: 12px; --rb: 999px;
+    }
+    body[data-skin="midnight"] {
+      --bg: #0f1115; --bg-2: #14171c; --card: #1a1e24; --ink: #eef1f5; --muted: #98a0ab; --line: #2a2f37;
+      --blue: #6c8cff; --sage: #252d3b; --sage-2: #8aa0c8; --sage-ink: #eef1f5; --foot: #08090b;
+      --display: 'Sora', 'Segoe UI', sans-serif; --body: 'Inter', 'Segoe UI', sans-serif; --r: 12px; --rb: 8px; --shadow: none;
       color-scheme: dark;
     }
+    body[data-skin="sunset"] {
+      --bg: #fbf1e9; --bg-2: #fff8f2; --card: #ffffff; --ink: #2a1b14; --muted: #7a6458; --line: #eedbcd;
+      --blue: #e8590c; --sage: #f4b183; --sage-2: #c96d33; --sage-ink: #2a1b14; --foot: #2a1b14;
+      --display: 'Poppins', 'Segoe UI', sans-serif; --body: 'DM Sans', 'Segoe UI', sans-serif; --r: 16px; --rb: 999px;
+    }
+    body[data-skin="forest"] {
+      --bg: #ebf1ec; --bg-2: #f4f8f5; --card: #ffffff; --ink: #13251b; --muted: #5a6d61; --line: #d1ddd4;
+      --blue: #1f7a4d; --sage: #2f5d45; --sage-2: #4f8a6a; --sage-ink: #ffffff; --foot: #0f1f16;
+      --display: 'DM Sans', 'Segoe UI', sans-serif; --body: 'DM Sans', 'Segoe UI', sans-serif; --r: 10px; --rb: 8px;
+    }
+    body[data-skin="mono"] {
+      --bg: #ffffff; --bg-2: #f4f4f4; --card: #ffffff; --ink: #0a0a0a; --muted: #666666; --line: #dedede;
+      --blue: #0a0a0a; --sage: #0a0a0a; --sage-2: #555555; --sage-ink: #ffffff; --foot: #0a0a0a;
+      --display: 'Space Grotesk', 'Segoe UI', sans-serif; --body: 'Space Grotesk', 'Segoe UI', sans-serif; --r: 0px; --rb: 0px;
+    }
+    body[data-skin="lavender"] {
+      --bg: #f2f0fa; --bg-2: #f9f8fd; --card: #ffffff; --ink: #1e1a33; --muted: #6a6585; --line: #e0dbf1;
+      --blue: #6d4aff; --sage: #cbbff6; --sage-2: #8f78e6; --sage-ink: #1e1a33; --foot: #1e1a33;
+      --display: 'Sora', 'Segoe UI', sans-serif; --body: 'Inter', 'Segoe UI', sans-serif; --r: 18px; --rb: 999px;
+    }
+    body[data-skin="royal"] {
+      --bg: #f3f1ea; --bg-2: #faf9f4; --card: #ffffff; --ink: #13203a; --muted: #5d6576; --line: #e2ddcf;
+      --blue: #13203a; --sage: #c8a24a; --sage-2: #a5822f; --sage-ink: #13203a; --foot: #13203a;
+      --display: 'Playfair Display', Georgia, serif; --body: 'DM Sans', 'Segoe UI', sans-serif; --r: 2px; --rb: 2px;
+    }
+    body[data-skin="royal"] h1 span, body[data-skin="royal"] .dash { color: var(--sage-2); }
+    body[data-skin="royal"] .dash { background: var(--sage); }
+    body[data-skin="mono"] h1 span { color: var(--muted); }
+    body[data-skin="mono"] .btn-blue { box-shadow: none; }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -74,7 +102,7 @@
     .nav a:hover, .nav a.active { color: var(--blue); }
     .nav a.active::after { transform: scaleX(1); }
     .h-actions { display: flex; align-items: center; gap: 12px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 22px; border-radius: 4px; font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; border: 1.5px solid transparent; cursor: pointer; transition: background .2s, color .2s, transform .15s, box-shadow .2s; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 22px; border-radius: var(--rb); font-family: var(--display); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; border: 1.5px solid transparent; cursor: pointer; transition: background .2s, color .2s, transform .15s, box-shadow .2s; }
     .btn svg { transition: transform .2s; }
     .btn:hover svg { transform: translateX(3px); }
     .btn-blue { background: var(--blue); color: var(--blue-ink); box-shadow: 0 8px 18px color-mix(in srgb, var(--blue) 30%, transparent); }
@@ -126,7 +154,7 @@
     .t-blue { fill: var(--blue); }
     .t-dark { fill: var(--ink); }
     .t-sage { fill: var(--sage-2); }
-    .info-card { position: absolute; right: 0; top: 140px; width: 150px; padding: 18px 16px; background: color-mix(in srgb, var(--card) 80%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--line); border-radius: 6px; font-size: 13px; }
+    .info-card { position: absolute; right: 0; top: 140px; width: 150px; padding: 18px 16px; background: color-mix(in srgb, var(--card) 80%, transparent); backdrop-filter: blur(6px); border: 1px solid var(--line); border-radius: var(--r); font-size: 13px; }
     .info-card .eyebrow { font-size: 10px; margin-bottom: 6px; }
     .info-card div + div { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
     .info-card .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--sage-2); margin-left: 4px; vertical-align: middle; }
@@ -143,7 +171,7 @@
 
     /* Featured work */
     .work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .w-card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; display: flex; flex-direction: column; }
+    .w-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); transition: transform .25s, box-shadow .25s; display: flex; flex-direction: column; }
     .w-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(20,24,28,.12); }
     .w-shot { aspect-ratio: 16/11; max-width: 100%; margin: 10px 10px 0; border-radius: 4px; overflow: hidden; position: relative; display: grid; place-items: center; }
     .w-meta { padding: 16px 14px 18px; }
@@ -160,7 +188,7 @@
     .bars i { width: 7px; background: #8e9a87; border-radius: 2px 2px 0 0; }
     /* mock: ImageSlider dark app */
     .s2 { background: #16181b; }
-    .win { width: 86%; border-radius: 6px; background: #1f2226; border: 1px solid #2d3136; padding: 8px; }
+    .win { width: 86%; border-radius: var(--r); background: #1f2226; border: 1px solid #2d3136; padding: 8px; }
     .win .bar { display: flex; gap: 4px; margin-bottom: 8px; }
     .win .bar i { width: 6px; height: 6px; border-radius: 50%; background: #3a3f45; }
     .win .sl { display: flex; gap: 6px; align-items: center; }
@@ -191,14 +219,14 @@
     .logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 18px; margin-top: 26px; }
     .logos span { display: flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: .02em; color: var(--ink); opacity: .85; }
     .logos svg { flex: none; }
-    .quote { background: var(--sage); color: var(--sage-ink); border-radius: 6px; padding: 28px; display: flex; flex-direction: column; }
+    .quote { background: var(--sage); color: var(--sage-ink); border-radius: var(--r); padding: 28px; display: flex; flex-direction: column; }
     .quote .qm { font-family: Georgia, serif; font-size: 42px; line-height: .6; opacity: .7; }
     .quote p { font-size: 16px; line-height: 1.6; margin: 14px 0 22px; }
     .quote .who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
     .quote .who span { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.22); display: grid; place-items: center; font-family: var(--display); font-weight: 700; }
     .quote .who b { display: block; font-family: var(--display); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
     .quote .who small { opacity: .85; font-size: 12px; }
-    .learn { background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 24px; text-align: center; box-shadow: var(--shadow); }
+    .learn { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; text-align: center; box-shadow: var(--shadow); }
     .ring { width: 96px; height: 96px; margin: 18px auto; border-radius: 50%; border: 5px solid var(--sage); display: grid; place-items: center; color: var(--sage-2); }
     body.dark .ring { color: #c3ccbd; }
     .learn ul { list-style: none; font-size: 13px; color: var(--muted); display: grid; gap: 6px; }
@@ -206,7 +234,7 @@
     /* Process */
     .process { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; position: relative; padding-top: 36px; }
     .process::before { content: ''; position: absolute; left: 6%; right: 0; top: 9px; height: 1px; background: var(--line); }
-    .step { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 18px 16px; transition: border-color .2s, transform .2s; }
+    .step { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 16px; transition: border-color .2s, transform .2s; }
     .step:hover { border-color: var(--blue); transform: translateY(-3px); }
     .step::before { content: ''; position: absolute; top: -34px; left: 50%; translate: -50% 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-2); border: 1.5px solid var(--muted); box-shadow: inset 0 0 0 3px var(--bg-2), inset 0 0 0 7px var(--sage); }
     .step-h { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
@@ -230,12 +258,12 @@
     form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     form .full { grid-column: 1 / -1; }
     label.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-    input, select, textarea { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 12px 14px; font-size: 13px; transition: border-color .2s; }
+    input, select, textarea { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: var(--rb); padding: 12px 14px; font-size: 13px; transition: border-color .2s; }
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue); }
     textarea { min-height: 110px; resize: vertical; }
     .form-note { grid-column: 1 / -1; font-size: 13px; min-height: 1.2em; }
     .form-note a { color: var(--blue); text-decoration: underline; }
-    .avail-card { background: var(--card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; box-shadow: var(--shadow); }
+    .avail-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
     .cubes { height: 150px; display: grid; place-items: center; background: linear-gradient(180deg, var(--bg-2), var(--card)); }
     .cubes svg { width: 150px; height: auto; }
     .avail-card p { display: flex; gap: 10px; align-items: flex-start; padding: 16px; font-family: var(--display); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
@@ -250,8 +278,25 @@
     footer ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 16px; }
     footer a:hover { color: #fff; }
     .f-cta { display: flex; margin-top: 4px; }
-    .f-cta a { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; border: 1px solid #45484c; border-radius: 4px; }
+    .f-cta a { flex: 1; display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; border: 1px solid #45484c; border-radius: var(--rb); }
     .f-cta a:hover { border-color: var(--blue); }
+
+    /* Theme picker */
+    .fab { position: fixed; z-index: 60; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 18px 0 14px; border-radius: 999px; border: 0; cursor: pointer; background: #16181b; color: #fff; border: 1px solid rgba(255,255,255,.16); font: 600 13px/1 system-ui, -apple-system, 'Segoe UI', sans-serif; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .fab .sw3 { display: flex; } .fab .sw3 i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #16181b; margin-left: -5px; } .fab .sw3 i:first-child { margin-left: 0; }
+    .picker { position: fixed; z-index: 61; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(72px + env(safe-area-inset-bottom, 0px)); width: min(380px, calc(100vw - 32px)); max-height: calc(100vh - 110px); overflow-y: auto; background: #16181b; color: #fff; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; padding: 16px; box-shadow: 0 24px 60px rgba(0,0,0,.35); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+    .picker-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
+    .picker-head button { background: none; border: 0; color: #aaa; font-size: 20px; cursor: pointer; line-height: 1; }
+    .skins { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .skin { text-align: left; border: 2px solid transparent; border-radius: 12px; padding: 0; overflow: hidden; cursor: pointer; background: #222529; color: #fff; transition: border-color .2s, transform .15s; }
+    .skin:hover { transform: translateY(-2px); }
+    .skin[aria-pressed="true"] { border-color: #fff; }
+    .skin .pv { height: 62px; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; }
+    .skin .pv b { font-size: 15px; line-height: 1; }
+    .skin .pv span { display: flex; gap: 4px; }
+    .skin .pv span i { width: 22px; height: 8px; border-radius: 4px; }
+    .skin .nm { display: block; padding: 8px 10px; font-size: 12.5px; font-weight: 600; }
+    .skin .nm small { display: block; font-weight: 400; color: #9a9ea4; font-size: 11px; }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
 
@@ -317,8 +362,8 @@
     </ul>
     <div class="h-actions">
       <a href="#contact" class="btn btn-line">Let's talk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <button class="round" id="themeBtn" aria-label="Toggle dark mode" aria-pressed="false">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <button class="round" id="themeBtn" aria-label="Choose theme" aria-controls="picker" aria-expanded="false">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.7 1.8-1.7H17a4 4 0 0 0 4-4c0-4.6-4-8.2-9-8.2z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="14.5" cy="7" r="1"/></svg>
       </button>
       <button class="round menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -581,15 +626,55 @@
   </div>
 </footer>
 
+<button class="fab" id="fab" aria-controls="picker" aria-expanded="false"><span class="sw3" id="fabSw"><i></i><i></i><i></i></span><span id="fabName">Theme</span></button>
+<div class="picker" id="picker" role="dialog" aria-label="Choose a theme" hidden>
+  <div class="picker-head">Choose a theme <button type="button" id="pickerClose" aria-label="Close">×</button></div>
+  <div class="skins" id="skins"></div>
+</div>
+
 <script>
-  // Dark mode (light by default)
-  const themeBtn = document.getElementById('themeBtn');
-  const setDark = on => { document.body.classList.toggle('dark', on); themeBtn.setAttribute('aria-pressed', on); };
-  try { setDark(localStorage.getItem('dark') === '1'); } catch (e) {}
-  themeBtn.addEventListener('click', () => {
-    const on = !document.body.classList.contains('dark'); setDark(on);
-    try { localStorage.setItem('dark', on ? '1' : '0'); } catch (e) {}
+  // Themes: name, description, [background, accent, secondary, text], display font
+  const SKINS = [
+    ['sage', 'Sage', 'Grey, sage & royal blue', ['#eceef0', '#1f4fd1', '#a4ae9d', '#1d1f22'], 'Montserrat'],
+    ['ocean', 'Ocean', 'Fresh blue, rounded', ['#eaf2f8', '#0b7bd8', '#7fb3d5', '#0f2433'], 'Poppins'],
+    ['midnight', 'Midnight', 'Dark mode, indigo', ['#0f1115', '#6c8cff', '#252d3b', '#eef1f5'], 'Sora'],
+    ['sunset', 'Sunset', 'Warm orange, friendly', ['#fbf1e9', '#e8590c', '#f4b183', '#2a1b14'], 'Poppins'],
+    ['forest', 'Forest', 'Deep green, calm', ['#ebf1ec', '#1f7a4d', '#2f5d45', '#13251b'], 'DM Sans'],
+    ['mono', 'Monochrome', 'Black & white, sharp', ['#ffffff', '#0a0a0a', '#555555', '#0a0a0a'], 'Space Grotesk'],
+    ['lavender', 'Lavender', 'Soft purple, modern', ['#f2f0fa', '#6d4aff', '#cbbff6', '#1e1a33'], 'Sora'],
+    ['royal', 'Royal', 'Navy & gold, classic', ['#f3f1ea', '#13203a', '#c8a24a', '#13203a'], 'Playfair Display'],
+  ];
+  const DEFAULT_SKIN = 'sage';
+  const skinsEl = document.getElementById('skins'), picker = document.getElementById('picker');
+  const fab = document.getElementById('fab'), themeBtn = document.getElementById('themeBtn');
+  SKINS.forEach(([id, name, desc, c, font]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'skin'; b.dataset.skin = id;
+    b.innerHTML = `<span class="pv" style="background:${c[0]};color:${c[3]}"><b style="font-family:'${font}',sans-serif">Aa</b><span><i style="background:${c[1]}"></i><i style="background:${c[2]}"></i></span></span><span class="nm">${name}<small>${desc}</small></span>`;
+    b.addEventListener('click', () => setSkin(id));
+    skinsEl.appendChild(b);
   });
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  function setSkin(id) {
+    const s = SKINS.find(x => x[0] === id) || SKINS[0];
+    document.body.dataset.skin = s[0];
+    skinsEl.querySelectorAll('.skin').forEach(b => b.setAttribute('aria-pressed', b.dataset.skin === s[0]));
+    document.getElementById('fabName').textContent = 'Theme: ' + s[1];
+    [...document.querySelectorAll('#fabSw i')].forEach((i, n) => i.style.background = s[3][n]);
+    if (themeMeta) themeMeta.content = s[3][0];
+    try { localStorage.setItem('skin', s[0]); } catch (e) {}
+  }
+  let saved = DEFAULT_SKIN;
+  try { saved = localStorage.getItem('skin') || DEFAULT_SKIN; } catch (e) {}
+  setSkin(saved);
+  function togglePicker(open) {
+    picker.hidden = !open;
+    fab.setAttribute('aria-expanded', open); themeBtn.setAttribute('aria-expanded', open);
+  }
+  fab.addEventListener('click', () => togglePicker(picker.hidden));
+  themeBtn.addEventListener('click', () => togglePicker(picker.hidden));
+  document.getElementById('pickerClose').addEventListener('click', () => togglePicker(false));
+  addEventListener('keydown', e => { if (e.key === 'Escape') togglePicker(false); });
 
   // Header border + mobile menu
   const header = document.getElementById('header');
